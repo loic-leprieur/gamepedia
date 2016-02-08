@@ -1,1 +1,7 @@
 # gamepedia
+
+## MEMBRES
+
+LEPRIEUR
+VINCENT
+DUBOIS
