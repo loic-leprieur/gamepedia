@@ -9,7 +9,9 @@
 namespace app\model;
 
 
-class Platform
+use Illuminate\Database\Eloquent\Model;
+
+class Platform extends Model
 {
 
     protected $table = 'platform';

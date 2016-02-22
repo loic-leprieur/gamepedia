@@ -9,7 +9,9 @@
 namespace app\model;
 
 
-class Game_developers
+use Illuminate\Database\Eloquent\Model;
+
+class Game_developers extends Model
 {
     /**
      * Table pochette de la base de données

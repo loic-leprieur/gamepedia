@@ -9,7 +9,9 @@
 namespace app\model;
 
 
-class enemies
+use Illuminate\Database\Eloquent\Model;
+
+class enemies extends Model
 {
 
     protected $table = 'enemies';

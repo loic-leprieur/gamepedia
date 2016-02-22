@@ -9,7 +9,9 @@
 namespace app\model;
 
 
-class Game_Rating
+use Illuminate\Database\Eloquent\Model;
+
+class Game_Rating extends Model
 {
 
     protected $table = 'game_rating';
