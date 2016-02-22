@@ -18,4 +18,15 @@ class Company extends Model{
     protected $primaryKey = 'id';
 
     public $timestamps = false;
+
+    protected $fillable = ['name', 'location_country', 'deck',];
+
+    public function companies(){
+        $res = '';
+        foreach($this->limit(300)->offset(0)->get() as $co){
+            if($co->location_country == 'Japan')
+                $res .= $co->id . ' ' . $co->name . ' / ' . $co->location_country . ' / ' . $co->deck . '<br><br>';
+        }
+        return $res;
+    }
 }

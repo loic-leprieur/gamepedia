@@ -9,7 +9,13 @@
 namespace app\controler;
 
 
-class ControleurPlateformes
-{
+use app\model\Platform;
 
+class ControleurPlateformes{
+    public function __construct(){}
+
+    public function listerCompanies(){
+        $pf= new Platform();
+        echo $pf->plateformes();
+    }
 }
