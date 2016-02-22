@@ -1,12 +1,56 @@
-
 <?php
+
 namespace conf;
+
 use Illuminate\Database\Capsule\Manager as DB;
-class ConnectionFactory extends \Illuminate\Database\Connectors\ConnectionFactory{
-    public static function makeConnection($file){
-        $db = new DB();
-        $db->addConnection(parse_ini_file($file));
-        $db->setAsGlobal();
-        $db->bootEloquent();
+
+/**
+ * Classe qui permet créer une connection à une base de données avec des paramètres
+ */
+class ConnectionFactory {
+
+    /**
+     * Le tableau qui contiendra les paramètres
+     */
+    private static $config = array();
+    /**
+     * La connection
+     */
+    private static $connection = null;
+
+    private static $connectionPDO = null;
+
+    /**
+     * Fonction qui permet de modifier les paramètres de la connection
+     */
+    public static function setConfig($fichier) {
+        // fichier de config pour la connection
+        self::$config = parse_ini_file($fichier);
     }
+
+    /**
+     * Fonction statique qui permet de récupérer une connection à une base de données
+     */
+    public static function makeConnection() {
+        if (self::$connection == null) {
+            // creation de la connection avec eloquent
+            self::$connection = new DB();
+            self::$connection->addConnection(self::$config);
+            self::$connection->setAsGlobal();
+            self::$connection->bootEloquent();
+        }
+        return self::$connection;
+    }
+
+
+    public static function makeConnectionPDO(){
+        if (self::$connectionPDO == null) {
+
+            // creation de la connection avec PDO
+            self::$connectionPDO = new \PDO('mysql:host='.static::$config['host'].';dbname='.static::$config['database'], static::$config['username'], static::$config['password']);
+        }
+        return self::$connectionPDO;
+
+    }
+
 }
