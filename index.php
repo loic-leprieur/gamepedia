@@ -12,6 +12,11 @@ $db = \conf\ConnectionFactory::makeConnection();
 
 /* Routes vers le TD2 */
 
+$app->get('/', function(){
+    $controleur = new app\controler\ControleurAccueil();
+    $controleur->render();
+});
+
 $app->get('/q1', function(){
     $controleur = new \app\controler\ControleurJeux();
     $controleur->listerJeux();
