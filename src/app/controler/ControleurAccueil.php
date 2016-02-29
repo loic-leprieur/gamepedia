@@ -21,6 +21,8 @@ class ControleurAccueil
     <li><a href=$racineServeur/q2>Question 2</a></li>
     <li><a href=$racineServeur/q3>Question 3</a></li>
     <li><a href=$racineServeur/q4>Question 4</a></li>
+    <li><a href=$racineServeur/q5>Question 5</a></li>
+    <li><a href=$racineServeur/q6>Question 6</a></li>
 </ul>
 END;
         echo $html;

@@ -3,3 +3,4 @@
 composer.*
 vendor/
 
+/src/conf/*.ini
