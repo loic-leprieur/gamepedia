@@ -1,6 +1,4 @@
 .idea/
-/conf/*.ini
-composer.*
 vendor/
 
 /src/conf/*.ini

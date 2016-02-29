@@ -28,7 +28,7 @@ class ControleurJeux{
     }
 
     public function persoJeu12342(){
-        foreach(Game::find(12342)->characters() as $ch){
+        foreach(Game::find(12342)->characters()->get() as $ch){
             echo $ch->id . '. ' . $ch->name . ' : ' . $ch->deck . "\n";
         }
     }

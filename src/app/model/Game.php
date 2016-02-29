@@ -55,6 +55,6 @@ class Game extends Model
     }
 
     public function characters(){
-        return $this->belongsToMany('app\model\Character', 'game2Character', 'game_id', 'character_id');
+        return $this->belongsToMany('app\model\Character', 'game2character', 'game_id', 'character_id');
     }
 }
