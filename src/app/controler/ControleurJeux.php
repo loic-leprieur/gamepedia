@@ -14,17 +14,24 @@ class ControleurJeux{
 
     public function listerJeux(){
         $jeux = new Game();
-        echo $jeux->games();
+        foreach($jeux->all() as $jeu){
+            echo $jeu->id . ' ' . $jeu->name . ' : ' . $jeu->deck.'<br><br>';
+        }
     }
 
     public function liste442(){
         $jeux = new Game();
-        echo $jeux->games442();
+        foreach($jeux->limit(442)->offset(21172)->get() as $jeu){
+            echo $jeu->id . ' ' . $jeu->name . ' ' . $jeu->deck.'<br><br>';
+        }
     }
 
     public function listeMario(){
         $jeux = new Game();
-        echo $jeux->mario();
+        foreach($jeux->all()->where('name', 'like', '%Mario%') as $jeu){
+            /*if(strpos($jeu->name, 'Mario') != false)*/
+            echo $jeu->id . ' ' . $jeu->name . '<br>';
+        }
     }
 
     public function persoJeu12342(){
@@ -34,17 +41,12 @@ class ControleurJeux{
     }
 
     public function persoJeuxMario(){
-        /*foreach(Game::limit(1000)->offset(0)->get() as $jeu) {
-            foreach ($jeu->characters() as $perso) {
-                echo $jeu->name . '<br>';
-                echo '    * ' . $perso->name . '<br>';
-            }
-            echo '<br>';
-        }*/
-
-        foreach(Game::all() as $jeu){
-            echo $jeu->name;
+        $jeux = new Game();
+        foreach ($jeux->characters() as $perso) {
+            echo $jeux->name . '<br>';
+            echo '    * ' . $perso->name . '<br>';
         }
+        echo '<br>';
     }
 }
 

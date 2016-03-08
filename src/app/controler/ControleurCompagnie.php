@@ -15,7 +15,10 @@ class ControleurCompagnie{
     public function __construct(){}
 
     public function listeCompagniesJapon(){
-        $comp = new Company();
-        echo $comp->companies();
+        $compagnies = new Company();
+        foreach($compagnies->all()->where('location_country', 'like', 'Japan') as $co){
+            /*if($co->location_country == 'Japan')*/
+            echo $co->id . ' ' . $co->name . ' / ' . $co->location_country . ' / ' . $co->deck . '<br><br>';
+        }
     }
 }

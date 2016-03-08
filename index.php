@@ -10,46 +10,59 @@ $app = new \Slim\Slim();
 $db = \conf\ConnectionFactory::makeConnection();
 
 
-/* Routes vers le TD2 */
-
 $app->get('/', function(){
     $controleur = new app\controler\ControleurAccueil();
     $controleur->render();
 });
 
-$app->get('/q1', function(){
+/**
+ * TD2
+ */
+
+/* Question 1 */
+$app->get('/td2/q1', function(){
     $controleur = new \app\controler\ControleurJeux();
     $controleur->listerJeux();
 });
 
-$app->get('/q2', function(){
+/* Question 2 */
+$app->get('/td2/q2', function(){
     $controleur = new \app\controler\ControleurJeux();
     $controleur->liste442();
 });
 
-$app->get('/q3', function(){
+
+/* Question 3 */
+$app->get('/td2/q3', function(){
     $controleur = new \app\controler\ControleurJeux();
     $controleur->listeMario();
 });
 
-$app->get('/q4', function(){
+
+/* Question 4 */
+$app->get('/td2/q4', function(){
     $controleur = new \app\controler\ControleurCompagnie();
     $controleur->listeCompagniesJapon();
 });
 
-$app->get('/q5', function(){
+/* Question 5 */
+$app->get('/td2/q5', function(){
     $controleur = new \app\controler\ControleurPlateformes();
     $controleur->listerCompanies();
 });
 
-/* Routes vers le TD3 */
+/**
+ * TD3
+ */
 
-$app->get('/q6', function(){
+/* Question 1 */
+$app->get('/td3/q6', function(){
     $controleur = new \app\controler\ControleurJeux();
     $controleur->persoJeu12342();
 });
 
-$app->get('/q7', function(){
+/* Question 2 */
+$app->get('/td3/q7', function(){
     $controleur = new \app\controler\ControleurJeux();
     $controleur->persoJeuxMario();
 });
