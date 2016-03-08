@@ -48,7 +48,7 @@ $app->get('/td2/q4', function(){
 /* Question 5 */
 $app->get('/td2/q5', function(){
     $controleur = new \app\controler\ControleurPlateformes();
-    $controleur->listerCompanies();
+    $controleur->listerPlatform();
 });
 
 /**

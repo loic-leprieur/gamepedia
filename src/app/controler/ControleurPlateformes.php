@@ -14,8 +14,10 @@ use app\model\Platform;
 class ControleurPlateformes{
     public function __construct(){}
 
-    public function listerCompanies(){
-        $pf= new Platform();
-        echo $pf->plateformes();
+    public function listerPlatform(){
+        foreach(Platform::all() as $p){
+            if($p->install_base >= 10000000)
+                echo $p->id . ' ' . $p->name . ' ' . $p->install_base . '<br><br>';
+        }
     }
 }
