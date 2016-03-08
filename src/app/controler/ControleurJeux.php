@@ -47,5 +47,13 @@ class ControleurJeux{
             }
         }
     }
+
+    public function jeuxSony(){
+        foreach(Game::all() as $jeu){
+            foreach($jeu->companyAsDeveloper()->where('name', 'like', 'Sony')->get() as $compagnie){
+                echo $compagnie->name . ' : '. $jeu->name.'<br>';
+            }
+        }
+    }
 }
 

@@ -69,8 +69,15 @@ $app->get('/td3/q7', function(){
     $controleur->persoJeuxMario();
 });
 
-$app->run();
 
+/* Question 3 */
+$app->get('/td3/q8', function() {
+    $controleur = new \app\controler\ControleurJeux();
+    $controleur->jeuxSony();
+});
+
+// activation des routes
+$app->run();
 
 /**
  * TD4 : durée des requêtes précédentes

@@ -23,12 +23,4 @@ class Platform extends Model
 
     public $fillable = ['name', 'install_base'];
 
-    public function plateformes(){
-        $res = '';
-        foreach($this->limit(30)->offset(0)->get() as $p){
-            if($p->install_base >= 10000000)
-                $res .= $p->id . ' ' . $p->name . ' ' . $p->install_base . '<br><br>';
-        }
-        return $res;
-    }
 }
