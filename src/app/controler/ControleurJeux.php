@@ -40,12 +40,12 @@ class ControleurJeux{
     }
 
     public function persoJeuxMario(){
-        $jeux = new Game();
-        foreach ($jeux->characters() as $perso) {
-            echo $jeux->name . '<br>';
-            echo '    * ' . $perso->name . '<br>';
+        foreach(Game::where('name', 'like', '%Mario%')->get() as $jeu){
+            echo '<b>' . $jeu->name . '</b><br>';
+            foreach($jeu->characters()->get() as $perso){
+                echo $perso->name . '<br>';
+            }
         }
-        echo '<br>';
     }
 }
 

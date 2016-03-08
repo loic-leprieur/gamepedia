@@ -71,6 +71,11 @@ $app->get('/td3/q7', function(){
 
 $app->run();
 
+
+/**
+ * TD4 : durée des requêtes précédentes
+ */
+
 $start=microtime(true);
 
 //$liste = \app\model\Game::all();
