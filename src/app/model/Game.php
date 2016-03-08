@@ -61,4 +61,8 @@ class Game extends Model
     public function company(){
         return $this->belongsToMany('app\model\Company', 'game_developers', 'game_id', 'comp_id');
     }
+
+    public function original_game_ratings(){
+        return $this->belongsToMany('app\model\GameRating', 'game_rating', 'game_id', 'rating_id');
+    }
 }

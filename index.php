@@ -3,6 +3,8 @@
 include 'vendor/autoload.php';
 require_once "src/conf/ConnectionFactory.php";
 
+use app\model\GameRating;
+
 $app = new \Slim\Slim();
 
 \conf\ConnectionFactory::setConfig('src/conf/db.config.ini');
@@ -49,8 +51,14 @@ $app->get('/q6', function(){
     $controleur->persoJeu12342();
 });
 
+$app->get('/q7', function(){
+    $controleur = new \app\controler\ControleurJeux();
+    $controleur->persoJeuxMario();
+});
+
 $app->run();
 
+$app->run();
 $start=microtime(true);
 
 //$liste = \app\model\Game::all();
@@ -70,6 +78,7 @@ $time=microtime(true)-$start;
 //echo "durée requête 3 : ".$time."\n";
 
 $start=microtime(true);
+
 $liste=\app\model\Game::where('name', 'like', '%Mario%')
     ->whereHas('original_game_ratings', function($q){
         $q->where('name', 'like', '%3+%');
@@ -77,10 +86,3 @@ $liste=\app\model\Game::where('name', 'like', '%Mario%')
     ->get();
 $time=microtime(true)-$start;
 echo "durée requête 4 : ".$time."\n";
-=======
-$app->get('/q7', function(){
-    $controleur = new \app\controler\ControleurJeux();
-    $controleur->persoJeuxMario();
-});
-
-$app->run();
