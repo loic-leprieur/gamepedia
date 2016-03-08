@@ -33,8 +33,9 @@ class ControleurJeux{
     }
 
     public function persoJeu12342(){
+        echo Game::find(12342)->name . ' a pour personnages : <br><br>';
         foreach(Game::find(12342)->characters()->get() as $ch){
-            echo $ch->id . '. ' . $ch->name . ' : ' . $ch->deck . '<br><br>';
+            echo '* '.$ch->id . '. ' . $ch->name . ' : ' . $ch->deck . '<br><br>';
         }
     }
 
