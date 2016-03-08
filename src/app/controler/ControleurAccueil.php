@@ -23,6 +23,7 @@ class ControleurAccueil
     <li><a href=$racineServeur/q4>Question 4</a></li>
     <li><a href=$racineServeur/q5>Question 5</a></li>
     <li><a href=$racineServeur/q6>Question 6</a></li>
+    <li><a href=$racineServeur/q7>Question 7</a></li>
 </ul>
 END;
         echo $html;

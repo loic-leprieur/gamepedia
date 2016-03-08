@@ -29,7 +29,21 @@ class ControleurJeux{
 
     public function persoJeu12342(){
         foreach(Game::find(12342)->characters()->get() as $ch){
-            echo $ch->id . '. ' . $ch->name . ' : ' . $ch->deck . "<br><br> ";
+            echo $ch->id . '. ' . $ch->name . ' : ' . $ch->deck . '<br><br>';
+        }
+    }
+
+    public function persoJeuxMario(){
+        /*foreach(Game::limit(1000)->offset(0)->get() as $jeu) {
+            foreach ($jeu->characters() as $perso) {
+                echo $jeu->name . '<br>';
+                echo '    * ' . $perso->name . '<br>';
+            }
+            echo '<br>';
+        }*/
+
+        foreach(Game::all() as $jeu){
+            echo $jeu->name;
         }
     }
 }
