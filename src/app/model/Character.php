@@ -19,7 +19,9 @@ class Character extends Model{
 
     public $timestamps = false;
 
-    public function characters(){
+    protected $fillable = ['name', 'real_name'];
+
+    public function games(){
         return $this->belongsToMany('app\model\Game', 'game2Character', 'character_id', 'game_id');
     }
 }

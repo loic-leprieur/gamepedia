@@ -49,4 +49,9 @@ $app->get('/q6', function(){
     $controleur->persoJeu12342();
 });
 
+$app->get('/q7', function(){
+    $controleur = new \app\controler\ControleurJeux();
+    $controleur->persoJeuxMario();
+});
+
 $app->run();
