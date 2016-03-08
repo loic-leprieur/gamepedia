@@ -27,9 +27,7 @@ class ControleurJeux{
     }
 
     public function listeMario(){
-        $jeux = new Game();
-        foreach($jeux->all()->where('name', 'like', '%Mario%') as $jeu){
-            /*if(strpos($jeu->name, 'Mario') != false)*/
+        foreach(Game::where('name', 'like', '%Mario%')->get() as $jeu){
             echo $jeu->id . ' ' . $jeu->name . '<br>';
         }
     }
