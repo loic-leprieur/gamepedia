@@ -76,6 +76,12 @@ $app->get('/td3/q8', function() {
     $controleur->jeuxSony();
 });
 
+/* Question 4*/
+$app->get('/td3/q9', function(){
+    $controleur = new \app\controler\ControleurJeux();
+    $controleur->ratingJeuxMario();
+});
+
 // activation des routes
 $app->run();
 

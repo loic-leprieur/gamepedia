@@ -20,4 +20,6 @@ class Rating_board extends Model
     protected $primaryKey = 'id';
 
     public $timestamps = false;
+
+
 }

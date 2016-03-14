@@ -41,7 +41,7 @@ class ControleurJeux{
     }
 
     public function persoJeuxMario(){
-        foreach(Game::where('name', 'like', '%Mario%')->get() as $jeu){
+        foreach(Game::where('name', 'like', '%Mario')->get() as $jeu){
             echo '<b>' . $jeu->name . '</b><br>';
             foreach($jeu->characters()->get() as $perso){
                 echo $perso->name . '<br>';
@@ -53,6 +53,16 @@ class ControleurJeux{
         foreach(Company::where('name', 'like', '%Sony%')->get() as $compagnie) {
             foreach ($compagnie->gamesAsDeveloper as $jeu) {
                 echo $compagnie->name . ' : ' . $jeu->name . '<br>';
+            }
+        }
+    }
+
+    public function ratingJeuxMario(){
+        foreach(Game::where('name', 'like', '%Mario%')->get() as $jeu) {
+            echo '<b>' . $jeu->name . '</b><br>';
+            foreach ($jeu->original_game_ratings()->get() as $rating) {
+                echo $rating->name . '<br>';
+                echo $rating->ratingBoard()->get()->name;
             }
         }
     }
