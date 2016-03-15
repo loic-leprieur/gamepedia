@@ -76,16 +76,28 @@ $app->get('/td3/q3', function() {
     $controleur->jeuxSony();
 });
 
-/* Question 4*/
+/* Question 4 */
 $app->get('/td3/q4', function(){
     $controleur = new \app\controler\ControleurJeux();
     $controleur->ratingJeuxMario();
 });
 
-/* Question 5*/
+/* Question 5 */
 $app->get('/td3/q5', function(){
     $controleur = new \app\controler\ControleurJeux();
     $controleur->jeuxMario3Persos();
+});
+
+/* Question 6 */
+$app->get('/td3/q6', function(){
+    $controleur = new \app\controler\ControleurJeux();
+    $controleur->jeuxMarioRating3();
+});
+
+/* Question 7 */
+$app->get('/td3/q7', function(){
+    $controleur = new \app\controler\ControleurJeux();
+    $controleur->jeuxMarioCompIncRating3Cero();
 });
 
 // activation des routes

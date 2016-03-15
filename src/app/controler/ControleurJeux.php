@@ -78,5 +78,31 @@ class ControleurJeux{
 
         }
     }
+
+    public function jeuxMarioRating3(){
+        foreach(Game::where('name', 'like', '%Mario')->get() as $jeu){
+            foreach($jeu->original_game_ratings()->where("name", "like", "%3+%")->get() as $rating){
+                echo '<b>' . $jeu->name . '</b> : '. $rating->name .'<br>';
+            }
+        }
+    }
+
+    public function jeuxMarioCompIncRating3Cero(){
+        foreach(Company::where('name', 'like', '%Inc%')->get() as $compagnie) {
+            foreach ($compagnie->gamesAsDeveloper as $jeu) {
+                if($jeu->gamesAsDeveloper()->where('name', 'like', '%Mario')){
+                    echo $jeu->name . '<br>';
+                }
+            }
+        }
+
+        foreach(Company::where('name', 'like', '%Inc%')->get() as $comp){
+            foreach($comp->gamesAsDeveloper()->where('name', 'like', '%Mario')->get() as $jeu){
+                foreach($jeu->original_game_ratings()->where('name', 'like', '%3+%')->get() as $rating){
+                    echo '<b>' . $jeu->name . '</b> : '. $rating->name .'<br>';
+                }
+            }
+        }
+    }
 }
 
