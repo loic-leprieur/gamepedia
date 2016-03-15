@@ -8,6 +8,7 @@
 
 namespace app\controler;
 use app\model\Game;
+use app\model\Company;
 
 class ControleurJeux{
     public function __construct(){}
@@ -33,18 +34,46 @@ class ControleurJeux{
     }
 
     public function persoJeu12342(){
+        echo Game::find(12342)->name . ' a pour personnages : <br><br>';
         foreach(Game::find(12342)->characters()->get() as $ch){
-            echo $ch->id . '. ' . $ch->name . ' : ' . $ch->deck . '<br><br>';
+            echo '* '.$ch->id . '. ' . $ch->name . ' : ' . $ch->deck . '<br><br>';
         }
     }
 
     public function persoJeuxMario(){
-        $jeux = new Game();
-        foreach ($jeux->characters() as $perso) {
-            echo $jeux->name . '<br>';
-            echo '    * ' . $perso->name . '<br>';
+        foreach(Game::where('name', 'like', '%Mario')->get() as $jeu){
+            echo '<b>' . $jeu->name . '</b><br>';
+            foreach($jeu->characters()->get() as $perso){
+                echo $perso->name . '<br>';
+            }
         }
-        echo '<br>';
+    }
+
+    public function jeuxSony(){
+        foreach(Company::where('name', 'like', '%Sony%')->get() as $compagnie) {
+            foreach ($compagnie->gamesAsDeveloper as $jeu) {
+                echo $compagnie->name . ' : ' . $jeu->name . '<br>';
+            }
+        }
+    }
+
+    public function ratingJeuxMario(){
+        foreach(Game::where('name', 'like', '%Mario%')->get() as $jeu) {
+            echo '<b>' . $jeu->name . '</b><br>';
+            foreach ($jeu->original_game_ratings()->get() as $rating) {
+                echo $rating->name . '<br>';
+                echo $rating->ratingBoard()->get()->name;
+            }
+        }
+    }
+
+    public function jeuxMario3Persos(){
+        foreach(Game::where('name', 'like', '%Mario')->get() as $jeu){
+            echo '<b>' . $jeu->name . '</b><br>';
+            foreach($jeu->characters()->get() as $perso){
+                echo $perso->name . '<br>';
+            }
+        }
     }
 }
 

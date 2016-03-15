@@ -69,9 +69,26 @@ $app->get('/td3/q7', function(){
     $controleur->persoJeuxMario();
 });
 
+
+/* Question 3 */
+$app->get('/td3/q8', function() {
+    $controleur = new \app\controler\ControleurJeux();
+    $controleur->jeuxSony();
+});
+
+/* Question 4*/
+$app->get('/td3/q9', function(){
+    $controleur = new \app\controler\ControleurJeux();
+    $controleur->ratingJeuxMario();
+});
+
+// activation des routes
 $app->run();
 
-$app->run();
+/**
+ * TD4 : durée des requêtes précédentes
+ */
+
 $start=microtime(true);
 
 //$liste = \app\model\Game::all();

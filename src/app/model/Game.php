@@ -34,7 +34,7 @@ class Game extends Model
         return $this->belongsToMany('app\model\Character', 'game2character', 'game_id', 'character_id');
     }
 
-    public function company(){
+    public function companyAsDeveloper(){
         return $this->belongsToMany('app\model\Company', 'game_developers', 'game_id', 'comp_id');
     }
 

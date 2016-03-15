@@ -27,4 +27,10 @@ class GameRating extends Model
 
     public $timestamps = false;
 
+    protected $fillable = ['name', 'rating_board_id'];
+
+    public function ratingBoard(){
+        return $this->belongsTo('app\model\Rating_board', 'rating_board_id');
+    }
+
 }
