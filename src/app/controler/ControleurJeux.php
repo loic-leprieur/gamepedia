@@ -66,5 +66,14 @@ class ControleurJeux{
             }
         }
     }
+
+    public function jeuxMario3Persos(){
+        foreach(Game::where('name', 'like', '%Mario')->get() as $jeu){
+            echo '<b>' . $jeu->name . '</b><br>';
+            foreach($jeu->characters()->get() as $perso){
+                echo $perso->name . '<br>';
+            }
+        }
+    }
 }
 
