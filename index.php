@@ -92,10 +92,10 @@ $time=microtime(true)-$start;
 
 $start=microtime(true);
 
-$liste=\app\model\Game::where('name', 'like', '%Mario%')
-    ->whereHas('original_game_ratings', function($q){
-        $q->where('name', 'like', '%3+%');
-    })
-    ->get();
+//$liste=\app\model\Game::where('name', 'like', '%Mario%')
+    //->whereHas('original_game_ratings', function($q){
+       //$q->where('name', 'like', '%3+%');
+    //})
+    //->get();
 $time=microtime(true)-$start;
-echo "durée requête 4 : ".$time."\n";
+//echo "durée requête 4 : ".$time."\n";
