@@ -58,28 +58,34 @@ $app->get('/td2/q5', function(){
  */
 
 /* Question 1 */
-$app->get('/td3/q6', function(){
+$app->get('/td3/q1', function(){
     $controleur = new \app\controler\ControleurJeux();
     $controleur->persoJeu12342();
 });
 
 /* Question 2 */
-$app->get('/td3/q7', function(){
+$app->get('/td3/q2', function(){
     $controleur = new \app\controler\ControleurJeux();
     $controleur->persoJeuxMario();
 });
 
 
 /* Question 3 */
-$app->get('/td3/q8', function() {
+$app->get('/td3/q3', function() {
     $controleur = new \app\controler\ControleurJeux();
     $controleur->jeuxSony();
 });
 
 /* Question 4*/
-$app->get('/td3/q9', function(){
+$app->get('/td3/q4', function(){
     $controleur = new \app\controler\ControleurJeux();
     $controleur->ratingJeuxMario();
+});
+
+/* Question 5*/
+$app->get('/td3/q5', function(){
+    $controleur = new \app\controler\ControleurJeux();
+    $controleur->jeuxMario3Persos();
 });
 
 // activation des routes
