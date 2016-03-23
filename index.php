@@ -58,46 +58,28 @@ $app->get('/td2/q5', function(){
  */
 
 /* Question 1 */
-$app->get('/td3/q1', function(){
+$app->get('/td3/q6', function(){
     $controleur = new \app\controler\ControleurJeux();
-    $controleur->persoJeu12342();
+    $controleur->persoJeu12342();s
 });
 
 /* Question 2 */
-$app->get('/td3/q2', function(){
+$app->get('/td3/q7', function(){
     $controleur = new \app\controler\ControleurJeux();
     $controleur->persoJeuxMario();
 });
 
 
 /* Question 3 */
-$app->get('/td3/q3', function() {
+$app->get('/td3/q8', function() {
     $controleur = new \app\controler\ControleurJeux();
     $controleur->jeuxSony();
 });
 
-/* Question 4 */
-$app->get('/td3/q4', function(){
+/* Question 4*/
+$app->get('/td3/q9', function(){
     $controleur = new \app\controler\ControleurJeux();
     $controleur->ratingJeuxMario();
-});
-
-/* Question 5 */
-$app->get('/td3/q5', function(){
-    $controleur = new \app\controler\ControleurJeux();
-    $controleur->jeuxMario3Persos();
-});
-
-/* Question 6 */
-$app->get('/td3/q6', function(){
-    $controleur = new \app\controler\ControleurJeux();
-    $controleur->jeuxMarioRating3();
-});
-
-/* Question 7 */
-$app->get('/td3/q7', function(){
-    $controleur = new \app\controler\ControleurJeux();
-    $controleur->jeuxMarioCompIncRating3Cero();
 });
 
 // activation des routes
@@ -106,6 +88,7 @@ $app->run();
 /**
  * TD4 : durée des requêtes précédentes
  */
+DB::connection()->enableQueryLog();
 
 $start=microtime(true);
 
