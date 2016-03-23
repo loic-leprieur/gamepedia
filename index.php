@@ -93,53 +93,25 @@ $app->run();
 $start=microtime(true);
 
 //$liste = \app\model\Game::all();
-$time=microtime(true)-$start;
+//$time=microtime(true)-$start;
 //echo "durée requête 1 : ".$time."\n";
 
-$start=microtime(true);
 //$liste=\app\model\Game::where('name', 'like', '%Mario%')->get();
-$time=microtime(true)-$start;
+//$time=microtime(true)-$start;
 
 //echo "durée requête 2 : ".$time."\n";
 
-$start=microtime(true);
 //$liste=\app\model\Character::where('name', 'like', '%Mario%')->get();
-$time=microtime(true)-$start;
+//$time=microtime(true)-$start;
 
 //echo "durée requête 3 : ".$time."\n";
 
-$start=microtime(true);
 
 //$liste=\app\model\Game::where('name', 'like', '%Mario%')
     //->whereHas('original_game_ratings', function($q){
        //$q->where('name', 'like', '%3+%');
     //})
     //->get();
-$time=microtime(true)-$start;
+//$time=microtime(true)-$start;
 //echo "durée requête 4 : ".$time."\n";
 
-/*Question 2.1*/
-$db::enableQueryLog();
-$app->get('/td3/q7', function(){
-    $controleur = new \app\controler\ControleurJeux();
-    $controleur->persoJeuxMario();
-});
-
-/* Question 2.2 */
-
-$app->get('/td3/q6', function(){
-    $controleur = new \app\controler\ControleurJeux();
-    $controleur->persoJeu12342();
-});
-
-/* Question 2.3 */
-$app->get('/td3/q8', function() {
-    $controleur = new \app\controler\ControleurJeux();
-    $controleur->jeuxSony();
-});
-
-/* Question 2.4 */
-$app->get('/td3/q9', function(){
-    $controleur = new \app\controler\ControleurJeux();
-    $controleur->ratingJeuxMario();
-});

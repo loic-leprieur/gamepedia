@@ -88,20 +88,34 @@ class ControleurJeux{
     }
 
     public function jeuxMarioCompIncRating3Cero(){
-        foreach(Company::where('name', 'like', '%Inc%')->get() as $compagnie) {
-            foreach ($compagnie->gamesAsDeveloper as $jeu) {
-                if($jeu->gamesAsDeveloper()->where('name', 'like', '%Mario')){
-                    echo $jeu->name . '<br>';
-                }
-            }
-        }
 
-        foreach(Company::where('name', 'like', '%Inc%')->get() as $comp){
-            foreach($comp->gamesAsDeveloper()->where('name', 'like', '%Mario')->get() as $jeu){
-                foreach($jeu->original_game_ratings()->where('name', 'like', '%3+%')->get() as $rating){
-                    echo '<b>' . $jeu->name . '</b> : '. $rating->name .'<br>';
+        /*foreach(Company::where('name', 'like', '%Inc%')->get() as $comp){
+            foreach($comp->gamesAsDeveloper()->get() as $jeu){
+                foreach($jeu->where('name', 'like', '%Mario%')->get() as $jeuMario){
+                    foreach($jeuMario->original_game_ratings()->where("name", "like", "%3+%")->get() as $rating){
+                        echo '<h4><b>'.$comp->name . '</b> :</h4>';
+                        echo $jeuMario->name . ' : ' . $rating->name . '<br>';
+                    }
                 }
             }
+        }*/
+
+        foreach(Game::where('name', 'like', '%Mario%')
+                    ->whereHas('original_game_ratings', function($q){
+                        $q->where('name', 'like', '%3+%');
+                    })
+                    ->whereHas('companyAsDeveloper', function($q) {
+                        $q->where('name', 'like', '%Inc.%');
+                    })
+                    ->get() as $game){
+            echo '####' . $game->name . ' : ' . $game->id . '<br>';
+            foreach ($game->original_game_ratings as $rating) {
+                echo '--------- ' . $rating->name . '<br>';
+            }
+            foreach($game->companyAsDeveloper as $comp){
+                echo '---> publisher : ' .$comp->name . '<br>';
+            }
+
         }
     }
 }
