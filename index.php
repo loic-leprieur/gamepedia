@@ -10,7 +10,7 @@ $app = new \Slim\Slim();
 \conf\ConnectionFactory::setConfig('src/conf/db.config.ini');
 
 $db = \conf\ConnectionFactory::makeConnection();
-
+$db::enableQueryLog();
 
 $app->get('/', function(){
     $controleur = new app\controler\ControleurAccueil();
@@ -115,3 +115,63 @@ $start=microtime(true);
 //$time=microtime(true)-$start;
 //echo "durée requête 4 : ".$time."\n";
 
+
+/*Question 2.1*/
+$app->get('/td3/q7', function(){
+    $controleur = new \app\controler\ControleurJeux();
+    $controleur->persoJeuxMario();
+});
+
+/* Question 2.2 */
+
+$app->get('/td3/q6', function(){
+    $controleur = new \app\controler\ControleurJeux();
+    $controleur->persoJeu12342();
+});
+
+/* Question 2.3 */
+$app->get('/td3/q8', function() {
+    $controleur = new \app\controler\ControleurJeux();
+    $controleur->jeuxSony();
+});
+
+/* Question 2.4 */
+$app->get('/td3/q9', function(){
+    $controleur = new \app\controler\ControleurJeux();
+    $controleur->ratingJeuxMario();
+});
+
+/**
+ * TD5
+ */
+
+/*mesure du temps d'exécution de la requête listant les jeux Mario*/
+
+/*$liste=\app\model\Game::where('name', 'like', '%Mario%')
+    ->whereHas('original_game_ratings', function($q){
+       $q->where('name', 'like', '%3+%');
+    })
+    ->get();
+
+$time=microtime(true)-$start;
+echo "durée requête Mario (1.7331500053406): " . $time. "<br>";
+*/
+
+/*mesure de la requête */
+
+$query = \app\model\Platform::where('install_base', '>=', '10000000')
+    ->get();
+$time=microtime(true)-$start;
+echo "durée requête Plateforme (10x +rapide avec index) >= 10,000,000 : " . $time. "\n";
+
+
+foreach($db::getQueryLog() as $q){
+    echo "\n -------------- \n";
+    echo "query : ".$q['query']."\n";
+    echo "--- bindings : [ ";
+    foreach ($q['bindings'] as $b) {
+        echo " ".$b.",";
+    }
+    echo "] ---\n";
+    echo "---------------- \n \n";
+};
