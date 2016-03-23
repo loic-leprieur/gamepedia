@@ -110,27 +110,51 @@ $app->run();
 $start=microtime(true);
 
 //$liste = \app\model\Game::all();
-$time=microtime(true)-$start;
+//$time=microtime(true)-$start;
 //echo "durée requête 1 : ".$time."\n";
 
-$start=microtime(true);
 //$liste=\app\model\Game::where('name', 'like', '%Mario%')->get();
-$time=microtime(true)-$start;
+//$time=microtime(true)-$start;
 
 //echo "durée requête 2 : ".$time."\n";
 
-$start=microtime(true);
 //$liste=\app\model\Character::where('name', 'like', '%Mario%')->get();
-$time=microtime(true)-$start;
+//$time=microtime(true)-$start;
 
 //echo "durée requête 3 : ".$time."\n";
 
-$start=microtime(true);
 
 //$liste=\app\model\Game::where('name', 'like', '%Mario%')
     //->whereHas('original_game_ratings', function($q){
        //$q->where('name', 'like', '%3+%');
     //})
     //->get();
-$time=microtime(true)-$start;
+//$time=microtime(true)-$start;
 //echo "durée requête 4 : ".$time."\n";
+
+
+/**
+ * TD5
+ */
+
+/*mesure du temps d'exécution de la requête listant les jeux Mario*/
+
+/*$liste=\app\model\Game::where('name', 'like', '%Mario%')
+    ->whereHas('original_game_ratings', function($q){
+       $q->where('name', 'like', '%3+%');
+    })
+    ->get();
+
+$time=microtime(true)-$start;
+echo "durée requête Mario (1.7331500053406): " . $time. "<br>";
+*/
+
+/*mesure de la requête */
+
+$query = \app\model\Platform::where('install_base', '>=', '10000000')
+    ->get();
+$time=microtime(true)-$start;
+echo "durée requête Plateforme (10x +rapide avec index) >= 10,000,000 : " . $time. "\n";
+
+
+
