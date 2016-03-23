@@ -89,17 +89,6 @@ class ControleurJeux{
 
     public function jeuxMarioCompIncRating3Cero(){
 
-        /*foreach(Company::where('name', 'like', '%Inc%')->get() as $comp){
-            foreach($comp->gamesAsDeveloper()->get() as $jeu){
-                foreach($jeu->where('name', 'like', '%Mario%')->get() as $jeuMario){
-                    foreach($jeuMario->original_game_ratings()->where("name", "like", "%3+%")->get() as $rating){
-                        echo '<h4><b>'.$comp->name . '</b> :</h4>';
-                        echo $jeuMario->name . ' : ' . $rating->name . '<br>';
-                    }
-                }
-            }
-        }*/
-
         foreach(Game::where('name', 'like', '%Mario%')
                     ->whereHas('original_game_ratings', function($q){
                         $q->where('name', 'like', '%3+%');
